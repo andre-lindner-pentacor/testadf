@@ -1,0 +1,96 @@
+{
+	"name": "DelimitedTextCoronaGeo",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HttpServerArcgis",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "/datasets/dd4580c810204019a7b8eb3e0b329dd6_0.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "ObjectId",
+				"type": "String"
+			},
+			{
+				"name": "IdBundesland",
+				"type": "String"
+			},
+			{
+				"name": "Bundesland",
+				"type": "String"
+			},
+			{
+				"name": "Landkreis",
+				"type": "String"
+			},
+			{
+				"name": "Altersgruppe",
+				"type": "String"
+			},
+			{
+				"name": "Geschlecht",
+				"type": "String"
+			},
+			{
+				"name": "AnzahlFall",
+				"type": "String"
+			},
+			{
+				"name": "AnzahlTodesfall",
+				"type": "String"
+			},
+			{
+				"name": "Meldedatum",
+				"type": "String"
+			},
+			{
+				"name": "IdLandkreis",
+				"type": "String"
+			},
+			{
+				"name": "Datenstand",
+				"type": "String"
+			},
+			{
+				"name": "NeuerFall",
+				"type": "String"
+			},
+			{
+				"name": "NeuerTodesfall",
+				"type": "String"
+			},
+			{
+				"name": "Refdatum",
+				"type": "String"
+			},
+			{
+				"name": "NeuGenesen",
+				"type": "String"
+			},
+			{
+				"name": "AnzahlGenesen",
+				"type": "String"
+			},
+			{
+				"name": "IstErkrankungsbeginn",
+				"type": "String"
+			},
+			{
+				"name": "Altersgruppe2",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

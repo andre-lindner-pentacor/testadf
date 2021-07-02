@@ -1,0 +1,137 @@
+{
+	"name": "CoronaJSON",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BigDataAzureDatalakeStorageEuropeWest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "corona",
+				"fileSystem": "foo"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"objectIdFieldName": {
+					"type": "string"
+				},
+				"uniqueIdField": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"isSystemMaintained": {
+							"type": "boolean"
+						}
+					}
+				},
+				"globalIdFieldName": {
+					"type": "string"
+				},
+				"fields": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"type": {
+								"type": "string"
+							},
+							"alias": {
+								"type": "string"
+							},
+							"sqlType": {
+								"type": "string"
+							},
+							"domain": {
+								"type": "null"
+							},
+							"defaultValue": {
+								"type": "null"
+							}
+						}
+					}
+				},
+				"exceededTransferLimit": {
+					"type": "boolean"
+				},
+				"features": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"attributes": {
+								"type": "object",
+								"properties": {
+									"IdBundesland": {
+										"type": "integer"
+									},
+									"Bundesland": {
+										"type": "string"
+									},
+									"Landkreis": {
+										"type": "string"
+									},
+									"Altersgruppe": {
+										"type": "string"
+									},
+									"Geschlecht": {
+										"type": "string"
+									},
+									"AnzahlFall": {
+										"type": "integer"
+									},
+									"AnzahlTodesfall": {
+										"type": "integer"
+									},
+									"ObjectId": {
+										"type": "integer"
+									},
+									"Meldedatum": {
+										"type": "integer"
+									},
+									"IdLandkreis": {
+										"type": "string"
+									},
+									"Datenstand": {
+										"type": "string"
+									},
+									"NeuerFall": {
+										"type": "integer"
+									},
+									"NeuerTodesfall": {
+										"type": "integer"
+									},
+									"Refdatum": {
+										"type": "integer"
+									},
+									"NeuGenesen": {
+										"type": "integer"
+									},
+									"AnzahlGenesen": {
+										"type": "integer"
+									},
+									"IstErkrankungsbeginn": {
+										"type": "integer"
+									},
+									"Altersgruppe2": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

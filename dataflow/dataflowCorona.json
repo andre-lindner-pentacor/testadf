@@ -1,0 +1,28 @@
+{
+	"name": "dataflowCorona",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "BigDataAzureDatalakeStorageEuropeWest",
+						"type": "LinkedServiceReference"
+					},
+					"name": "coronaGeoCsv"
+				}
+			],
+			"sinks": [
+				{
+					"name": "coronaCache"
+				}
+			],
+			"transformations": [
+				{
+					"name": "CoronaFiltered"
+				}
+			],
+			"script": "source(output(\n\t\tObjectId as short,\n\t\tIdBundesland as short,\n\t\tBundesland as string,\n\t\tLandkreis as string,\n\t\tAltersgruppe as string,\n\t\tGeschlecht as string,\n\t\tAnzahlFall as integer,\n\t\tAnzahlTodesfall as integer,\n\t\tMeldedatum as timestamp,\n\t\tIdLandkreis as short,\n\t\tDatenstand as timestamp 'dd.MM.yyyy\\',\\' HH:mm \\'Uhr\\'',\n\t\tNeuerFall as boolean,\n\t\tNeuerTodesfall as short,\n\t\tRefdatum as timestamp,\n\t\tNeuGenesen as integer,\n\t\tAnzahlGenesen as integer,\n\t\tIstErkrankungsbeginn as boolean,\n\t\tAltersgruppe2 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tlimit: 100,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tfileSystem: 'foo',\n\tfolderPath: 'corona/geo/datasets',\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tqutoChar: '\\\"',\n\tcolumnNamesAsHeader: true) ~> coronaGeoCsv\ncoronaGeoCsv select(mapColumn(\n\t\tIdBundesland,\n\t\tBundesland,\n\t\tIdLandkreis,\n\t\tLandkreis,\n\t\tAltersgruppe,\n\t\tGeschlecht,\n\t\tAnzahlFall,\n\t\tAnzahlTodesfall,\n\t\tNeuGenesen,\n\t\tAnzahlGenesen\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> CoronaFiltered\nCoronaFiltered sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tstore: 'cache',\n\tformat: 'inline',\n\toutput: false) ~> coronaCache"
+		}
+	}
+}

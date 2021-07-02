@@ -1,0 +1,76 @@
+{
+	"name": "DelimitedTextCorona",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HttpServerCorona",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Projekte_RKI/Nowcasting_Zahlen_csv.csv?__blob=publicationFile"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Datum",
+				"type": "String"
+			},
+			{
+				"name": "Schätzer_Neuerkrankungen",
+				"type": "String"
+			},
+			{
+				"name": "UG_PI_Neuerkrankungen",
+				"type": "String"
+			},
+			{
+				"name": "OG_PI_Neuerkrankungen",
+				"type": "String"
+			},
+			{
+				"name": "Schätzer_Neuerkrankungen_ma4",
+				"type": "String"
+			},
+			{
+				"name": "UG_PI_Neuerkrankungen_ma4",
+				"type": "String"
+			},
+			{
+				"name": "OG_PI_Neuerkrankungen_ma4",
+				"type": "String"
+			},
+			{
+				"name": "Schätzer_Reproduktionszahl_R",
+				"type": "String"
+			},
+			{
+				"name": "UG_PI_Reproduktionszahl_R",
+				"type": "String"
+			},
+			{
+				"name": "OG_PI_Reproduktionszahl_R",
+				"type": "String"
+			},
+			{
+				"name": "Schätzer_7_Tage_R_Wert",
+				"type": "String"
+			},
+			{
+				"name": "UG_PI_7_Tage_R_Wert",
+				"type": "String"
+			},
+			{
+				"name": "OG_PI_7_Tage_R_Wert",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
